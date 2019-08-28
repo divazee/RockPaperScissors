@@ -1,6 +1,11 @@
 var p1Name;
 var p2Name;
 
+var rock = "Rock";
+var paper = "Paper";
+var scissors = "Scissors";
+
+
 
 function askName() {
     p1Name = prompt("Player 1 Name:");
@@ -11,13 +16,14 @@ function askName() {
 }
 askName();
 
+
+
 function check(p1Name) {
     if (p1Name == "") {
         alert("Say your name");
         askName();
     }
 }
-
 
 function check(p2Name) {
     if (p2Name == "") {
@@ -31,23 +37,27 @@ function check(p2Name) {
 // }
 
 
-function playGame() {
-    var player1 = prompt("Hey! " + p1Name + ", your turn");
-    var player2 = prompt("Hi! " + p2Name + ", your turn");
 
-    if (player1 == player2) {
+function playGame() {
+    var p1Answer = prompt("Hey! " + p1Name.toUpperCase() + ", your turn");
+    var p2Answer = prompt("Hi! " + p2Name.toUpperCase() + ", your turn");
+
+
+    //var p1Answer = player1.toLowerCase();
+
+    if (p1Answer.toLowerCase() == p2Answer.toLowerCase()) {
         alert("Draw...");
-    } else if (player1 == "rock" && player2 == "scissors") {
+    } else if (p1Answer.toLowerCase() == rock.toLowerCase() && p2Answer.toLowerCase() == scissors.toLowerCase()) {
         alert(p1Name + " Wins!!!")
-    } else if (player1 == "rock" && player2 == "paper") {
+    } else if (p1Answer.toLowerCase() == rock.toLowerCase() && p2Answer.toLowerCase() == paper.toLowerCase()) {
         alert(p2Name + " Wins!!!")
-    } else if (player1 == "paper" && player2 == "scissors") {
+    } else if (p1Answer.toLowerCase() == paper.toLowerCase() && p2Answer.toLowerCase() == scissors.toLowerCase()) {
         alert(p2Name + " Wins!!!")
-    } else if (player1 == "paper" && player2 == "rock") {
+    } else if (p1Answer.toLowerCase() == paper.toLowerCase() && p2Answer.toLowerCase() == rock.toLowerCase()) {
         alert(p1Name + " Wins!!!")
-    } else if (player1 == "scissors" && player2 == "rock") {
+    } else if (p1Answer.toLowerCase() == scissors.toLowerCase() && p2Answer.toLowerCase() == rock.toLowerCase()) {
         alert(p2Name + " Wins!!!")
-    } else if (player1 == "scissors" && player2 == "paper") {
+    } else if (p1Answer.toLowerCase() == scissors.toLowerCase() && p2Answer.toLowerCase() == paper.toLowerCase()) {
         alert(p1Name + " Wins!!!")
     } else {
         alert("Choose Rock, Paper or Scissors");
@@ -58,11 +68,14 @@ playGame();
 
 
 function playAgain() {
-    var answer = prompt("do you wanna try me again? (Y/N)")
-    if (answer !== "Y") {
-        alert("GAME OVER!!!")
+    var answer = prompt("Do you wanna try me again? (Y/N)")
+    var reply = ["Y", "y", "yes", "Yes", "yeah", "Yeah"]
+    
+    //if (answer !== "Y") {
+        if (reply.includes(answer)) {
+            playGame();
     } else {
-        playGame();
+        alert("GAME OVER!!!");
     }
 }
 
